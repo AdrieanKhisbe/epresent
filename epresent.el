@@ -5,8 +5,8 @@
 
 ;; Authors: Tom Tromey <tromey@redhat.com>, Eric Schulte <schulte.eric@gmail.com>
 ;; Created: 12 Jun 2008
-;; Version: 0.1
-;; Keywords: gui
+;; Version: 0.1.0
+;; Keywords: gui, org
 
 ;; This file is not (yet) part of GNU Emacs.
 ;; However, it is distributed under the same license.
@@ -46,25 +46,25 @@
 
 (defface epresent-title-face
   '((t :weight bold :height 360 :underline t :inherit variable-pitch))
-  "")
+  "Title `epresent' face.")
 (defface epresent-heading-face
   '((t :weight bold :height 270 :underline t :inherit variable-pitch))
-  "")
+  "Heading `epresent' face.")
 (defface epresent-subheading-face
   '((t :weight bold :height 240 :inherit variable-pitch))
-  "")
+  "Subheading `epresent' face.")
 (defface epresent-author-face
   '((t :height 1.6 :inherit variable-pitch))
-  "")
+  "Author `epresent' face?")
 (defface epresent-bullet-face
   '((t :weight bold :height 1.4 :underline nil :inherit variable-pitch))
-  "")
+  "Bullet `epresent' face.")
 (defface epresent-hidden-face
   '((t :invisible t))
-  "")
+  "Hidden `epresent face.'")
 
 (defvar epresent--frame nil
-  "Frame for EPresent.")
+  "Frame for `epresent'.")
 
 (defvar epresent--org-buffer nil
   "Original Org-mode buffer")
@@ -106,22 +106,22 @@ If nil then source blocks are initially hidden on slide change.")
 
 (defun epresent--get-frame ()
   (unless (frame-live-p epresent--frame)
-    (setq epresent--frame (make-frame '((minibuffer . nil)
-                                        (title . "EPresent")
-                                        (fullscreen . fullboth)
-                                        (menu-bar-lines . 0)
-                                        (tool-bar-lines . 0)
-                                        (vertical-scroll-bars . nil)
-                                        (left-fringe . 0)
-                                        (right-fringe . 0)
-                                        (internal-border-width . 20)
-                                        (cursor-type . nil)
-                                        ))))
+    (setq epresent--frame
+          (make-frame '((minibuffer . nil)
+                        (title . "EPresent")
+                        (fullscreen . fullboth)
+                        (menu-bar-lines . 0)
+                        (tool-bar-lines . 0)
+                        (vertical-scroll-bars . nil)
+                        (left-fringe . 0)
+                        (right-fringe . 0)
+                        (internal-border-width . 20)
+                        (cursor-type . nil)))))
   (raise-frame epresent--frame)
   (select-frame-set-input-focus epresent--frame)
   epresent--frame)
 
-;; functions
+;;; Functions
 (defun epresent-get-frame-level ()
   "Get the heading level to show as different frames."
   (interactive)
@@ -435,7 +435,7 @@ If nil then source blocks are initially hidden on slide change.")
   "Local keymap for EPresent display mode.")
 
 (define-derived-mode epresent-mode org-mode "EPresent"
-  "Lalala."
+  "Epresent derived mode."
   (text-scale-adjust 0)
   (text-scale-adjust epresent-text-scale)
   ;; make Org-mode be as pretty as possible
@@ -463,9 +463,10 @@ If nil then source blocks are initially hidden on slide change.")
   (flyspell-mode-off)
   (epresent-fontify))
 
-(defvar epresent-edit-map (let ((map (copy-keymap org-mode-map)))
-                            (define-key map [f5] 'epresent-refresh)
-                            map)
+(defvar epresent-edit-map
+  (let ((map (copy-keymap org-mode-map)))
+    (define-key map [f5] 'epresent-refresh)
+    map)
   "Local keymap for editing EPresent presentations.")
 
 (defun epresent-edit-text (&optional arg)
