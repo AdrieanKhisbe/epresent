@@ -1,6 +1,9 @@
 #+TITLE: epresent.el
 
-[[https://melpa.org/#/epresent][file:https://melpa.org/packages/epresent-badge.svg]]
+[[https://travis-ci.org/eschulte/epresent][file:https://travis-ci.org/eschulte/epresent.svg]]
+[[https://coveralls.io/r/eschulte/epresent][file:https://coveralls.io/repos/eschulte/epresent/badge.svg]]
+[[http://melpa.org/#/epresent][file:http://melpa.org/packages/epresent-badge.svg]]
+[[http://stable.melpa.org/#/epresent][http://img.shields.io/:license-gpl3-blue.svg]]
 
 /Simple presentation mode for Emacs Org-mode/
 
